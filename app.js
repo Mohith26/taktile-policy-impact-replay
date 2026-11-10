@@ -54,7 +54,7 @@ function recompute() {
   state.solo = {};
   for (const e of edits) state.solo[e.id] = R.replay(state.rows, state.est, R.CHAMPION, [e], { lgd: state.meta.lgd, B: 200, seed: 11 });
   const ms = Math.round(performance.now() - t0);
-  $('status').textContent = `Replayed in ${ms} ms`;
+  $('status').textContent = ms > 0 ? `Replayed in ${ms} ms` : 'Replay complete';
   $('status').className = 'status ok';
   $('editCount').textContent = edits.length;
   render();
