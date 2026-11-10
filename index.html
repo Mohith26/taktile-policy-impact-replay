@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impact Replay · concept for a decision-flow canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="rail-mark" aria-hidden="true"></div>
+    <nav>
+      <span class="rail-i" title="Flows"><svg viewBox="0 0 20 20"><path d="M4 4h5v5H4zM11 11h5v5h-5zM9 6.5h3.5V11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <span class="rail-i active" title="Decision flow"><svg viewBox="0 0 20 20"><circle cx="10" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="15" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="15" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4M10 10l-5 3M10 10l5 3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+      <span class="rail-i" title="Cases"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <span class="rail-i" title="Insights"><svg viewBox="0 0 20 20"><path d="M4 16V9M10 16V4M16 16v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <span class="rail-i" title="Data"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="5" rx="6" ry="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 5v10c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2V5M4 10c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+    </nav>
+  </aside>
+
+  <header class="top">
+    <div class="crumbs"><span>Credit</span><i>/</i><span>Personal lending</span><i>/</i><b>Underwriting flow</b></div>
+    <div class="versions">
+      <span class="ver champion"><span class="dot"></span>v14 · Champion · Published</span>
+      <span class="vs">vs</span>
+      <span class="ver draft"><span class="dot"></span>v15 · Draft · <span id="editCount">4</span> edits</span>
+    </div>
+    <div class="top-actions">
+      <button class="btn ghost" type="button">Test run</button>
+      <button class="btn active" type="button">Impact replay</button>
+      <button class="btn dark" type="button" id="approvalBtn">Request sign-off</button>
+    </div>
+  </header>
+
+  <main class="canvas" id="canvas">
+    <div class="canvas-head">
+      <div>
+        <div class="eyebrow">Decision flow · v15 draft</div>
+        <div class="canvas-title">Edited nodes are outlined. Click a node to see the flips it causes.</div>
+      </div>
+      <div class="legend-inline"><span class="lg in"></span>swap-ins originate here <span class="lg out"></span>swap-outs land here</div>
+    </div>
+    <div class="flow" id="flow"></div>
+  </main>
+
+  <section class="panel" id="panel">
+    <div class="panel-head">
+      <div>
+        <h1>Impact replay</h1>
+        <p class="sub" id="subline">Loading decision history…</p>
+      </div>
+      <span class="status" id="status">Computing</span>
+    </div>
+
+    <div class="edits" id="edits"></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="tabs" role="tablist" id="tabs">
+      <button role="tab" data-tab="diff" class="on">Decision diff</button>
+      <button role="tab" data-tab="risk">Swap-in risk</button>
+      <button role="tab" data-tab="fair">Fairness</button>
+      <button role="tab" data-tab="seg">Segments</button>
+    </div>
+    <div class="tabbody" id="tabbody"></div>
+
+    <footer class="foot">Unofficial concept demo by Mohith Gajjela. Not affiliated with Taktile. Synthetic data. All figures are computed in your browser from <code>data/applications.json</code> by <code>core/replay.js</code>.</footer>
+  </section>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

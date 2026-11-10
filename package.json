@@ -1,0 +1,9 @@
+{
+  "name": "taktile-policy-impact-replay",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "test": "node --test test/replay.test.mjs"
+  }
+}
