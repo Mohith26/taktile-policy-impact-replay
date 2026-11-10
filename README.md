@@ -10,7 +10,7 @@ An unofficial concept for a new panel in a decision-flow canvas (built with Takt
 
 It also reports approval-rate and adverse-impact-ratio shifts by group (with bootstrap intervals) and segment-level deltas.
 
-> Unofficial concept demo by Mohith Gajjela. Not affiliated with Taktile. Synthetic data. No Taktile code, logos, or assets are used; styling is an approximation.
+> Unofficial concept demo by Mohith Gajjela. Not affiliated with Taktile. Synthetic data. No Taktile code or image assets are used. The UI recreates the app shell from public screenshots (flow sidebar, tabs, canvas nodes, Insights-style cards and charts) with Inter, Fira Code and Lucide icons standing in for the production fonts and Font Awesome icons.
 
 ## Why this is hard
 
@@ -48,7 +48,7 @@ Repeated-simulation check (`node scripts/coverage.mjs 40`, 40 fresh datasets):
 
 - `core/replay.js` (ES module, runs in the browser and Node): flow execution, decision diff and node-to-node transitions, weighted ridge logistic regression (IRLS), cross-fitted AIPW pseudo-outcomes, a naive baseline, bootstrap intervals over applicants, exact Shapley values over edit subsets (2^k flow replays, k <= 5), fairness (adverse impact ratio with bootstrap CI), segment tables.
 - `scripts/generate.mjs`: seeded generator for `data/applications.json` (what a lender would have: inputs, logged decision, propensity, outcomes for booked loans only) and `data/truth.json` (true default probabilities, used only for the simulation-check marker and tests).
-- `index.html`, `app.js`, `style.css`: static UI, no build step. Every number on screen is computed in the browser from the data file.
+- `index.html`, `app.js`, `style.css`: static UI, no build step, laid out as a new "Impact replay" page in a decision flow's sidebar (next to Versions, Decision history, Insights). Tabs: Overview (KPIs, v15 canvas with per-node swap-ins/swap-outs, edit toggles with Before/After values and Shapley shares, changed-path bars), Swap-in risk, Fairness, Segments. Deep links: `#tab=risk&on=fraud`. Every number on screen is computed in the browser from the data file.
 
 ## Run it
 
